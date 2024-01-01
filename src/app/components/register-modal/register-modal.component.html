@@ -1,0 +1,107 @@
+<!-- registration-form.component.html -->
+<div class="modal-overlay overflow-auto" [@openClose]="showRegisterModal ? 'open' : 'close'">
+    <div class="modal-content">
+      <div
+        class="modal-close"
+        [@openClose]="showRegisterModal ? 'open' : 'close'"
+        (click)="toggle()"
+      >
+        <span>&times;</span>
+      </div>
+      <h2 class="m-0">
+        <img
+          class="img-fluid me-3"
+          src="assets/img/icon/icon-02-primary.png"
+          alt=""
+        />
+      </h2>
+      <!-- Registration Form -->
+      <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-2">
+                  <label for="f_name" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="f_name" formControlName="f_name">
+                </div>
+              </div>
+          <div class="col-md-6">
+            <div class="mb-2">
+              <label for="l_name" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="l_name" formControlName="l_name">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-2">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-2">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-2">
+              <label for="confirm_password" class="form-label">Confirm Password</label>
+              <input type="Password" class="form-control" id="confirm_password" formControlName="confirm_password">
+            
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+            <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <select id="city" class="form-control" formControlName="city">
+                  <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                </select>                
+              </div>
+              <div class="col-md-6">
+                <div class="mb-2">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" formControlName="phone">
+                
+                </div>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="tel" class="form-control" id="address" formControlName="address">
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-2">
+                  <label for="cin" class="form-label">CIN</label>
+                  <input type="text" class="form-control" id="cin" formControlName="cin">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-2">
+                  <label for="date_of_birth" class="form-label">Date of Birth</label>
+                  <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+                </div>
+              </div>
+            </div>
+        <button type="submit" class="btn btn-primary my-3" style="width: 100%;">Register</button>
+      </form>
+    </div>
+  </div>
+  

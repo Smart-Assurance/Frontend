@@ -1,0 +1,136 @@
+<!-- Navbar -->
+<!-- Spinner Start -->
+<div
+  id="spinner"
+  *ngIf="showSpinner"
+  class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+>
+  <div class="spinner-grow text-primary" role="status"></div>
+</div>
+<!-- Spinner End -->
+
+<!-- Topbar Start -->
+<div class="container-fluid bg-dark text-white-50 py-2 px-0 d-none d-lg-block">
+  <div class="row gx-0 align-items-center">
+    <div class="col-lg-7 px-5 text-start">
+      <div class="h-100 d-inline-flex align-items-center me-4">
+        <small class="fa fa-phone-alt me-2"></small>
+        <small>+012 345 6789</small>
+      </div>
+      <div class="h-100 d-inline-flex align-items-center me-4">
+        <small class="far fa-envelope-open me-2"></small>
+        <small>info@example.com</small>
+      </div>
+      <div class="h-100 d-inline-flex align-items-center me-4">
+        <small class="far fa-clock me-2"></small>
+        <small>Mon - Fri : 09 AM - 09 PM</small>
+      </div>
+    </div>
+    <div class="col-lg-5 px-5 text-end">
+      <div class="h-100 d-inline-flex align-items-center">
+        <a class="text-white-50 ms-4" href=""
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a class="text-white-50 ms-4" href=""><i class="fab fa-twitter"></i></a>
+        <a class="text-white-50 ms-4" href=""
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a class="text-white-50 ms-4" href=""
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<nav
+  class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5"
+>
+  <a href="index.html" class="navbar-brand d-flex align-items-center">
+    <h2 class="m-0">
+      <img
+        class="img-fluid me-3"
+        src="assets/img/icon/icon-02-primary.png"
+        alt=""
+      />Smart Assurance
+    </h2>
+  </a>
+  <button
+    type="button"
+    class="navbar-toggler"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarCollapse"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
+      <a href="index.html" class="nav-item nav-link active">Home</a>
+      <a href="about.html" class="nav-item nav-link">About Us</a>
+      <a href="service.html" class="nav-item nav-link">Our Services</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+          >Pages</a
+        >
+        <div class="dropdown-menu bg-light border-0 m-0">
+          <a href="feature.html" class="dropdown-item">Features</a>
+          <a href="appointment.html" class="dropdown-item">Appointment</a>
+          <a href="team.html" class="dropdown-item">Team Members</a>
+          <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+          <a href="404.html" class="dropdown-item">404 Page</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+    </div>
+  </div>
+  <!-- If not logged in -->
+  <div *ngIf="!isLoggedIn">
+    <a (click)="toggleModal()" class="btn btn-primary px-3 d-none d-lg-block"
+      >Log in</a
+    >
+    <app-login-modal
+      [showModal]="isModalOpen"
+      (toggleModal)="toggleModal()"
+    ></app-login-modal>
+  </div>
+  <!-- If logged in -->
+<div *ngIf="isLoggedIn">
+    <!-- Dropdown menu -->
+    <div class="dropdown">
+      <button
+      class="btn btn-transparent dropdown-toggle"
+        type="button"
+        id="userDropdown"
+        data-bs-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <!-- Static profile photo -->
+        <img
+          src="../../../assets/img/user-profile.png"
+          alt="Profile Photo"
+          class="profile-photo"
+          style="width: 40px;"
+        />
+        <!-- Display the username -->
+      </button>
+  
+      <!-- Dropdown menu content -->
+      <div class="dropdown-menu" aria-labelledby="userDropdown">
+        <!-- Add any additional dropdown items here -->
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <div class="dropdown-divider"></div>
+  
+        <!-- Logout button -->
+        <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+  
+</nav>
+<!-- Navbar End -->
+
+<!-- modal component -->
