@@ -1,0 +1,122 @@
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Personal information</ng-template>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="f_name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="f_name" formControlName="f_name">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="cin" class="form-label">CIN</label>
+                        <input type="text" class="form-control" id="cin" formControlName="cin">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phone" formControlName="phone">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" formControlName="city">
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="date_of_birth" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="address" class="form-label">Wallet Address</label>
+                    <input type="address" class="form-control" id="address" formControlName="address">
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Car's information</ng-template>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="model" class="form-label">model</label>
+                        <input type="text" class="form-control" id="model">
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+            <ng-template matStepLabel>Payment transaction</ng-template>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="address" class="form-label">Agence Address</label>
+                    <input type="text" class="form-control" id="insuranceAddress" [(ngModel)]="insuranceAddress">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="address" class="form-label">Your Wallet Address</label>
+                    <input type="text" class="form-control" id="clientAddress" [(ngModel)]="clientAddress">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <mat-form-field floatLabel="always" style="width: 100%;">
+                            <mat-label>Amount</mat-label>
+                            <input matInput type="number" id="amountToSend" [(ngModel)]="amountToSend" class="example-right-align" placeholder="0" style="width: 100%;">
+                            <span matTextPrefix>ETH&nbsp;</span>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="margin-top: 25px;">
+                        <a class="btn btn-secondary px-3 d-none d-lg-block" (click)="sendAmountFromClient()">Send Transaction</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

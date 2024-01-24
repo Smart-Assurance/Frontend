@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { WalletService } from 'src/app/services/wallet.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +20,12 @@ export class NavbarComponent implements OnInit  {
     this.isModalOpen = !this.isModalOpen;
   }
 
-  constructor(private modalService: NgbModal,private authenticationService:AuthenticationService) { }
+  constructor(
+    private ethereumService: WalletService,
+    private modalService: NgbModal,
+    private authenticationService:AuthenticationService,
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
     // Call your spinner function after a timeout
@@ -41,6 +49,33 @@ export class NavbarComponent implements OnInit  {
   logout(){
     this.authenticationService.logout()
     this.isLoggedIn=false
+  }
+
+  private checkWalletConnection(): void {
+    this.ethereumService.currentAccount.subscribe(account => {
+      console.log('Current Account:', account);
+    });
+    this.ethereumService.checkWalletConnection();
+  }
+
+  public connectWallet(): void {
+    this.ethereumService.connectWallet()
+      .then(() => {
+        this.checkWalletConnection();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  openTransactionDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(TransactionFormComponent, {
+      width: '60%',
+      height: '60%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      disableClose: false,
+    });
   }
   
 }
