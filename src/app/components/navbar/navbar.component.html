@@ -83,13 +83,13 @@
         </div>
       </div>
       <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+      <a (click)="connectWallet()" class="nav-item nav-link">Connect wallet</a>
+      <a (click)="openTransactionDialog('1000ms', '500ms')" class="nav-item nav-link">TransactionForm</a>
     </div>
   </div>
   <!-- If not logged in -->
   <div *ngIf="!isLoggedIn">
-    <a (click)="toggleModal()" class="btn btn-primary px-3 d-none d-lg-block"
-      >Log in</a
-    >
+    <a (click)="toggleModal()" class="btn btn-primary px-3 d-none d-lg-block">Log in</a>
     <app-login-modal
       [showModal]="isModalOpen"
       (toggleModal)="toggleModal()"
