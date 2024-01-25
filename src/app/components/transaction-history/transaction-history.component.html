@@ -1,0 +1,35 @@
+<h4>Transaction History for address: {{ clientAddress }}</h4>
+<section class="partners">
+    <div class="containers">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let transaction of transactionHistory">
+                <div class="item">
+                    <a>
+                        <div class="portfolio-item">
+                            <div class="thumb">
+                                <h6>FROM:</h6>
+                                <p> {{ transaction.from }}</p>
+                                <h6>To:</h6>
+                                <p> {{ transaction.to }}</p>
+                                <h6>DateTime:</h6>
+                                <p> {{ getFormattedDate(transaction.timeStamp) }}</p>
+                            </div>
+                            <div class="down-content">
+                                <h6>Amount:</h6>
+                                <h4> {{ transaction.value /1e18 }} ETH</h4>
+                                <h6>Hash:</h6><span><small> {{ transaction.hash }}</small></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+        <button type="button" class="btn btn-outline-primary custom-btn" routerLink="/RefsPage">Voir tous</button>
+    </div>
+</section>
+
+<div>
+    <label for="clientAddress">Client Address:  </label>
+    <input type="text" id="clientAddress" [(ngModel)]="clientAddress" placeholder="Enter client address">
+</div>
+<button class="btn btn-primary px-3 d-none d-lg-block" (click)="getTransactionHistory()">Get Transaction History</button>
