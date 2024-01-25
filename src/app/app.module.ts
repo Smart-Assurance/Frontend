@@ -17,6 +17,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LoginModalComponent,
     RegisterModalComponent,
     TransactionFormComponent,
+    TransactionHistoryComponent,
 
   ],
   imports: [
@@ -40,7 +43,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -55,30 +55,6 @@ export class AppComponent implements OnInit{
     }
 }
 
-transactionHistory: any[] = [];
-async getTransactionHistory(): Promise<void> {
-  try {
-    if (this.clientAddress) {
-      this.transactionHistory = await this.CarInsuranceService.getTransactionHistory(this.clientAddress);
-      
-      console.log('Transaction History:', this.transactionHistory);
-    } else {
-      console.warn('Please provide a valid client address.');
-    }
-  } catch (error) {
-    console.error('Error fetching transaction history:', error);
-  }
-}
-
-getFormattedDate(timestamp: number | null): string {
-  if (timestamp) {
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleString(); 
-  } else {
-    return 'Timestamp not available';
-  }
-}
-
   async getClientTransactions() {
     try {
       if (this.clientAddress) {
