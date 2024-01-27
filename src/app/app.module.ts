@@ -20,6 +20,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ContractsComponent } from './components/contracts/contracts.component';
+import { CommonModule } from '@angular/common';
+import { ReadMoreComponent } from './components/read-more/read-more.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ContractsComponent } from './components/contracts/contracts.component';
     TransactionFormComponent,
     TransactionHistoryComponent,
     ContractsComponent,
+    ReadMoreComponent
 
   ],
   imports: [
@@ -47,6 +50,8 @@ import { ContractsComponent } from './components/contracts/contracts.component';
     MatButtonModule,
     MatDialogModule,
     CarouselModule,
+    CommonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

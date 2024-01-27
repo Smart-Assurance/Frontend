@@ -61,18 +61,99 @@
             <ng-template matStepLabel>Car's information</ng-template>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="mb-2">
-                        <label for="model" class="form-label">model</label>
-                        <input type="text" class="form-control" id="model">
-                    </div>
+                  <div class="mb-2">
+                    <label for="type" class="form-label">Type</label>
+                    <input type="text" class="form-control" id="type" formControlName="type">
+                  </div>
                 </div>
-
-            </div>
-
-            <div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="matricule" class="form-label">Matricule</label>
+                    <input type="text" class="form-control" id="matricule" formControlName="matricule">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="price" formControlName="price">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="grey_card_number" class="form-label">Grey Card Number</label>
+                    <input type="text" class="form-control" id="grey_card_number" formControlName="grey_card_number">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="model" class="form-label">Model</label>
+                    <input type="text" class="form-control" id="model" formControlName="model">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="marque" class="form-label">Marque</label>
+                    <input type="text" class="form-control" id="marque" formControlName="marque">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="puissanceFiscale" class="form-label">Puissance Fiscale</label>
+                    <input type="text" class="form-control" id="puissanceFiscale" formControlName="puissanceFiscale">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="carburant" class="form-label">Carburant</label>
+                    <input type="text" class="form-control" id="carburant" formControlName="carburant">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="annee" class="form-label">Annee</label>
+                    <input type="number" class="form-control" id="annee" formControlName="annee">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="boiteDeVitesses" class="form-label">Boite de Vitesses</label>
+                    <input type="text" class="form-control" id="boiteDeVitesses" formControlName="boiteDeVitesses">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <label for="etatDeVehicule" class="form-label">Etat de Vehicule</label>
+                    <input type="text" class="form-control" id="etatDeVehicule" formControlName="etatDeVehicule">
+                  </div>
+                </div>
+              </div>
+              <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
-            </div>
+              </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Contract is required.">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Contract's suggestion</ng-template>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label for="contract" class="form-label">Select Contract</label>
+                        <select class="form-control" id="contract" formControlName="contract" (change)="onContractSelected()">
+                            <option value="" disabled selected>Select a contract</option>
+                            <option *ngFor="let contract of contracts" [value]="contract.id">{{ contract.name }}</option>
+                          </select>
+                      </div>
+                </div>
+              </div>
+              <div *ngIf="selectedContract">
+                <p>{{ selectedContract.description }}</p>
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
         </form>
     </mat-step>
     <mat-step>

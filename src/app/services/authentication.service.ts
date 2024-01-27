@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationClient } from '../api/authentication.api';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private tokenKey = 'token';
-
+  private loginStatusSubject = new BehaviorSubject<boolean>(false);
+  loginStatus$ = this.loginStatusSubject.asObservable();
   constructor(
     private authenticationClient: AuthenticationClient,
     private router: Router,
@@ -17,11 +19,12 @@ export class AuthenticationService {
       next: (response) => {
         alert("Login Successful")
         localStorage.setItem(this.tokenKey, response.token);
-
+        this.loginStatusSubject.next(true);
       },
       error: (error) => {
         console.error("Error during login:", error);
         alert("Login Failed")
+        this.loginStatusSubject.next(false);
       }
     });
   }

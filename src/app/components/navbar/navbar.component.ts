@@ -28,15 +28,15 @@ export class NavbarComponent implements OnInit  {
     ) { }
 
   ngOnInit(): void {
-    // Call your spinner function after a timeout
+    
     setTimeout(() => {
       this.hideSpinner();
-    }, 1000); // 1000 milliseconds (1 second) timeout, adjust as needed
+    }, 1000); 
 
-    this.isLoggedIn = this.authenticationService.isLoggedIn()
-  }
+    this.authenticationService.loginStatus$.subscribe((status) => {
+      this.isLoggedIn = status || this.authenticationService.isLoggedIn();
+    });  }
 
-  // Function to hide the spinner
   hideSpinner() {
     this.showSpinner = false;
   }
