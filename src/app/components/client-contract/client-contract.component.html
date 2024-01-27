@@ -1,0 +1,55 @@
+<section class="partners">
+    <div class="containers">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide>  <!--*ngFor="let contract of clientContracts"-->
+                <div class="item">
+                    <a>
+                        <div class="portfolio-item">
+                            <h2 class="contract-title">Client Contract</h2>
+                            <div class="contract-details">
+                                <div class="contract-info">
+                                    <h6>First name:</h6>
+                                    <p>name test</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Last name:</h6>
+                                    <p>name test</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Wallet address:</h6>
+                                    <p>0x74102582025820252025820</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Contract Type:</h6>
+                                    <p>Premium</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Contract Ref:</h6>
+                                    <p>74108520852</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Options:</h6>
+                                    <p>Tous options</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Status:</h6>
+                                    <p>Active</p>
+                                </div>
+                                <div class="contract-info">
+                                    <h6>Activation DateTime:</h6>
+                                    <p>12/12/1212 12:12</p>
+                                </div>
+                            </div>
+                            <div class="contract-info" style="display: flex;">
+                                <h6>Amount:</h6>
+                                <h5 style="padding-left: 30px;">0.2 ETH</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</section>
+
+<app-transaction-history></app-transaction-history>

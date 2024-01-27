@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ClientContractComponent } from './components/client-contract/client-contract.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     RegisterModalComponent,
     TransactionFormComponent,
     TransactionHistoryComponent,
+    ClientContractComponent,
 
   ],
   imports: [

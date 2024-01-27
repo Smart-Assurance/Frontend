@@ -492,8 +492,8 @@ export class CarInsuranceContractService {
           from: client,
           to: insuranceAddress,
           value: amountInWei,
-          gasPrice: web3.utils.toWei('80', 'gwei'),
-          gas: '10000000',
+          gasPrice: web3.utils.toWei('50', 'gwei'),
+          gas: '80000',
         });
 
         console.log(`Sent ${amount}ETH from ${client} to ${insuranceAddress} successfully`);
