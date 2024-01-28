@@ -1,0 +1,72 @@
+.partners {
+    .containers {
+      position: relative;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  
+    owl-carousel-o {
+      display: block;
+      margin-bottom: 20px;
+    }
+  
+    .item {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+  
+      .portfolio-item {
+        .contract-title {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+  
+        .contract-details {
+          display: flex;
+          flex-wrap: wrap;
+  
+          .contract-info {
+            flex: 0 0 48%;
+            padding: 10px;
+  
+            h6 {
+              font-size: 14px;
+              margin-bottom: 5px;
+            }
+  
+            p {
+              font-size: 16px;
+              color: #333;
+              margin-bottom: 10px;
+            }
+          }
+        }
+  
+        .down-content {
+          .contract-info {
+            h6 {
+              font-size: 14px;
+              color: #555;
+              margin-bottom: 5px;
+            }
+  
+            h5 {
+              font-size: 20px;
+              color: #333;
+            }
+          }
+          text-align: center;
+        }
+      }
+    }
+  }
+  
