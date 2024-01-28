@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -35,9 +35,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     ]),
   ],
 })
-export class LoginModalComponent {
+export class LoginModalComponent implements OnInit{
   @Input() showModal: boolean | undefined;
   @Output() toggleModal = new EventEmitter<boolean>();
+  isLoggedIn: boolean = false;
 
   //Register Modal
   isModalOpen = false;
@@ -47,6 +48,7 @@ export class LoginModalComponent {
     this.showModal=false
   }
 
+  
 
   loginForm: FormGroup;
   constructor(
@@ -60,10 +62,20 @@ export class LoginModalComponent {
     });
   }
 
+  ngOnInit() {
+    this.authenticationService.loginStatus$.subscribe((status) => {
+      this.isLoggedIn = status;
+    });
+  }
   
   openModal(content: any) {
     this.modalService.open(content, { centered: true, size: 'lg' }); // Adjust size and options as needed
   }
+
+  closeModal() {
+    this.modalService.dismissAll(); // Adjust size and options as needed
+  }
+
 
 
   toggle() {
@@ -88,9 +100,7 @@ export class LoginModalComponent {
         this.loginForm.get('username')!.value,
         this.loginForm!.get('password')!.value
       );
-      if(this.authenticationService.isLoggedIn()){
-        this.showModal=false
-      }
+      this.showModal=false
       this.loginForm.reset()
     }
   }

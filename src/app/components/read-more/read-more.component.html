@@ -1,0 +1,23 @@
+<div class="modal-header bg-primary text-white">
+    <h4 class="modal-title">Contract Details</h4>
+  
+    <button type="button" class="close btn btn-danger-outline text-danger m-1" (click)="activeModal.dismiss()">
+      <i class="ti ti-close"></i>
+    </button>
+  </div>
+  <div class="modal-body my-3">
+    <div class="row mb-3">
+        <div class="col-md-12">
+          <p class="mb-2"><strong>Contract Name:</strong> {{ offer.name }}</p>
+          <p class="mb-2"><strong>Contract Price:</strong> {{ offer.price | currency:'USD':'symbol':'1.2-2' }}</p>
+          <p class="mb-2"><strong>Status:</strong> {{ offer.active ? 'Active' : 'Inactive' }}</p>
+          <p class="mb-2"><strong>Contract Options:</strong></p>
+          <ul>
+            <li *ngFor="let option of offer.options">{{ option }}</li>
+          </ul>
+            <p class="mb-2"><strong>Contract Description:</strong> {{ offer.description }}</p>
+        </div>
+      </div>
+  </div>
+  
+  

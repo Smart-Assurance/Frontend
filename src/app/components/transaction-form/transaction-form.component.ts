@@ -1,18 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CarInsuranceContractService } from 'src/app/services/car-insurance-contract.service';
+import { ContractsService } from 'src/app/services/contracts.service';
 
 @Component({
   selector: 'app-transaction-form',
   templateUrl: './transaction-form.component.html',
   styleUrls: ['./transaction-form.component.scss'],
 })
-export class TransactionFormComponent {
+export class TransactionFormComponent implements OnInit{
 
   clientAddress: string = '';
   insuranceAddress: string = '';
   amountToSend: number = 0;
   clientTransactions: any[] = [];
+  contracts: any[] = [];
+  selectedContract: any;
+
+  ngOnInit() {
+    this.thirdFormGroup = this._formBuilder.group({
+      contract: ['', Validators.required],
+    });
+
+    // Subscribe to contracts$ observable to get the latest contracts
+    this.contractsService.contracts$.subscribe(contracts => {
+      this.contracts = contracts;
+    });
+
+    // Trigger the getAll method to fetch contracts
+    this.contractsService.getAll();
+  }
 
   firstFormGroup = this._formBuilder.group({
     f_name: ['', Validators.required],
@@ -25,12 +42,37 @@ export class TransactionFormComponent {
   });
 
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+    type: ['', Validators.required],
+    matricule: ['', Validators.required],
+    price: ['', Validators.required],
+    grey_card_number: ['', Validators.required],
+    model: ['', Validators.required],
+    marque: ['', Validators.required],
+    puissanceFiscale: ['', Validators.required],
+    carburant: ['', Validators.required],
+    annee: [null, Validators.required],
+    boiteDeVitesses: ['', Validators.required],
+    etatDeVehicule: ['', Validators.required]  });
+
+  thirdFormGroup = this._formBuilder.group({
+      contract: ['', Validators.required],
+    });
 
   constructor(
     private _formBuilder: FormBuilder,
-    private carInsuranceService: CarInsuranceContractService) {}
+    private carInsuranceService: CarInsuranceContractService,
+    private contractsService: ContractsService
+    ) {}
+
+    onContractSelected() {
+      const selectedContractId = this.thirdFormGroup.get('contract')?.value;
+  
+      // Find the selected contract from the contracts array
+      this.selectedContract = this.contracts.find(contract => contract.id === selectedContractId);
+  
+      // If you have a service method to fetch the description, call it here
+      // For example: this.fetchContractDescription(selectedContractId);
+    }
 
   //from client to contract address
   async sendAmountFromClient(): Promise<void> {

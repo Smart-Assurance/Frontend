@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   constructor(
     private ethereumService: WalletService,
     private CarInsuranceService: CarInsuranceContractService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ){}
 
   ngOnInit(): void {
